@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TextInput from './TextInput'
 import SaveButton from './SaveButton'
 
@@ -12,6 +12,13 @@ export default function DreamScene() {
         totaltrade:100
     })
     const [result,setResult] = useState(0)
+    useEffect(()=>{
+
+        let lossCash = 30;
+        let rangeDollar = 2016.73 - 2011.94;
+        let lotResult = (lossCash*0.01)/rangeDollar;
+        console.log(lotResult);
+    },[])
     return (
         <div className='flex flex-col gap-4 w-fit'>
             <TextInput title={'RISK percentage'} value={form.risk.toString()}  onChange={(e) => {
