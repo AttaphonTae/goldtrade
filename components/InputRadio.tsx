@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 interface InputProps {
     formQuestion:FormQuestion,
@@ -12,7 +12,13 @@ export default function InputRadio({formQuestion,onChangeForm}:InputProps) {
         answer:'',
   
     })
-  
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    const handlePClick = () => {
+        if (inputRef.current) {
+            inputRef.current.click(); // Trigger the click event on the input
+        }
+    };
   return (
     <div className='p-2 flex flex-col gap-2'>
          <p>{formQuestion.question}</p>
@@ -29,7 +35,8 @@ export default function InputRadio({formQuestion,onChangeForm}:InputProps) {
                                     }}
                                 />
 
-                                <p>{value}</p>
+                                <p onClick={handlePClick}>{value}</p> {/* Click handler for the <p> tag */}
+
                         </div>
             })
          }
