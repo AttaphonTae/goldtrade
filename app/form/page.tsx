@@ -1,4 +1,6 @@
 'use client'
+import FormSelectMany from '@/components/FormSelectMany'
+import FormSelectOne from '@/components/FormSelectOne'
 import InputRadio from '@/components/InputRadio'
 import InputCheckbox from '@/components/InputSelected'
 import InputTextField from '@/components/InputText'
@@ -29,14 +31,14 @@ export default function page() {
                     />
         }
         else if(form.type === 'select-one'){
-            return <InputRadio
+            return <FormSelectOne
             onChangeForm={form=>{
                 console.log(form)
             }}
             formQuestion = {form} />
         }
         else if(form.type === 'select-many'){
-            return <InputCheckbox
+            return <FormSelectMany
             onChangeForm={form=>{
                 console.log(form)
             }}
