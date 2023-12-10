@@ -11,9 +11,7 @@ export default function InputTextField({formQuestion,onChangeForm}:InputProps) {
         choices:[],
         answer:'',
     })
-    useEffect(()=>{
-        onChangeForm(form)
-    },[form])
+  
   return (
     <div className='p-2 flex flex-col gap-2'>
          <p>{formQuestion.question}</p>
@@ -21,7 +19,7 @@ export default function InputTextField({formQuestion,onChangeForm}:InputProps) {
          <div className='flex flex-col gap-4'>
        
             <textarea onChange={(e)=>{
-                setForm({...form,answer: e.target.value})
+                onChangeForm({...form,answer: e.target.value})
             }} className='p-2 rounded-md text-slate-800' placeholder='your opinion...' />
          </div>
     </div>

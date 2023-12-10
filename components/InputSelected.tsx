@@ -11,9 +11,7 @@ export default function InputCheckbox({formQuestion,onChangeForm}:InputProps) {
         choices:[],
         answer:'',
     })
-    useEffect(()=>{
-        onChangeForm(form)
-    },[form])
+ 
   return (
     <div className='p-2 flex flex-col gap-2'>
          <p>{formQuestion.question}</p>
@@ -28,11 +26,11 @@ export default function InputCheckbox({formQuestion,onChangeForm}:InputProps) {
                                                 console.log('add');
                                                 if (!form.choices.includes(index)) {
                                                     const list = [...form.choices, index];
-                                                    setForm({ ...form, choices: list });
+                                                    onChangeForm({ ...form, choices: list });
                                                 }
                                             } else {
                                                 const list = form.choices.filter((item, i) => i !== index);
-                                                setForm({ ...form, choices: list });
+                                                onChangeForm({ ...form, choices: list });
                                             }
                                         }}
                                         
@@ -44,7 +42,7 @@ export default function InputCheckbox({formQuestion,onChangeForm}:InputProps) {
          <div className='flex flex-col gap-4'>
             <p>{'ข้อเสนอเเนะ หรือ เพิ่มเติม'}</p>
             <textarea onChange={(e)=>{
-                setForm({...form,answer: e.target.value})
+                onChangeForm({...form,answer: e.target.value})
             }} className='p-2 rounded-md text-slate-800' placeholder='your opinion...' />
          </div>
     </div>
